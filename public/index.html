@@ -3,61 +3,43 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-    <link rel="stylesheet" href="estilos.css">
+    <title>Servicios 2020</title>
+    <link rel="stylesheet" href="Misestilos.css">
 
   </head>
   <body>
-
+    <center>
     <h1>Videojuegos 2020</h1>
     <form action="javascript:eleccionHttp();">
       <p><input type="text" id="letra1" placeholder="Nombre del juego"></p>
+      <br>
+      <br>
       <p><input type="text" id="letra2" placeholder="Nombre de la Consola"></p>
       <p>
         <button type="submit">Enviar</button>
       </p>
-      <footer>  Bautista Morales Fernando IC-42M. Copyright &copy; </footer>
+      
     </form>
     <script>
+     
+      /** @returns {Response} */
       
       async function eleccionHttp() {
         try {
-          /** La función fetch envía los datos al servidor. El texto que recibe
-           * como parámetro es la url que se invoca. El signo de interrogación
-           * "?" permite pasarle parámetros y encodeURIComponent formatea la
-           * información para que se puede colocar en la URL. El signo "&"
-           * separa los parámetros. En este caso se envían los parámetros
-           * "nombre1" y "nombre2", tomados de la interfaz gráfica.
-           * nombre1.value.trim() toma la captura de id="nombre1" y le quita los
-           *        espacios y saltos de línea al inicio y al final.
-           * fetch lanza la comunicación con el servidor en otro hilo, devuelve
-           * una Promise para saber en que momento termina y trata de seguir a
-           * la siguiente instrucción antes que la comunicación termine.
-           * El operador await fuerza a esperar que la Promise indique el final
-           * de la operación y toma la respuesta devuelta por el servidor.
-           * @type {Response} */
+          /** @type {Response} */
           const resultadoHttp =
-            await fetch("Excelentejuego?letra1="
-              // @ts-ignore
+            await fetch("excelentejuego?letra1="
+              
               + encodeURIComponent(letra1.value.trim())
-              // @ts-ignore
+              
               + "&letra2=" + encodeURIComponent(letra2.value.trim()));
-          /* La property ok de la respuesta vale true si la conexión terminó
-           * con éxito. */
+          
           if (resultadoHttp.ok) {
-            /* En esta parte del if, la conexión terminó con éxito. Hay que
-             * mostrar el texto del servidor usando la instrucción
-             * respuestaHttp.text(); como este proceso puede ser tardado,
-             * se ejecuta en otro hilo y devuelve una Promise. Con await espera
-             * a que termine este proceso. */
+            
             const texto = await resultadoHttp.text();
             alert(texto);
           } else {
-            /* En esta parte del if, la conexión termina con errores. Se
-             * lanza una excepción que es atrapada por la función del
-             * catch en la línea 109. La expresión respuestaHttp.statusText
-             * devuelve un texto describiendo el error, que normalmente está
-             * en inglés. */
+            
             throw new Error(resultadoHttp.statusText)
           }
         } catch (e) {
@@ -65,6 +47,9 @@
         }
       }
     </script>
-    
+    </center>
   </body>
+  <center>
+  <footer>  Bautista Morales Fernando IC-42M. Copyright &copy; </footer>
+</center>
 </html>
