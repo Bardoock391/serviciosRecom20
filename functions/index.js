@@ -1,6 +1,6 @@
 const functions = require('firebase-functions');
 
-exports.excelentejuego = functions.https.onRequest(
+exports.juego = functions.https.onRequest(
     /** 
      * @param {{query:Object}} 
      * 
