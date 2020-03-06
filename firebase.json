@@ -1,10 +1,25 @@
 {
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
   "hosting": {
     "public": "public",
+    "headers": [
+      {
+        "source": "/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          },
+          {
+            "key": "Pragma",
+            "value": "no-cache"
+          },
+          {
+            "key": "Expires",
+            "value": "0"
+          }
+        ]
+      }
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -17,15 +32,9 @@
       }
     ]
   },
-  "storage": {
-    "rules": "storage.rules"
-  },
   "emulators": {
     "functions": {
       "port": 5001
-    },
-    "firestore": {
-      "port": 8080
     },
     "hosting": {
       "port": 5000
